@@ -18,7 +18,11 @@ public class DMRC_MAE_FACTURA_gen {
         try{
             System.out.println("Va a iniciar DMRC_MAE_FACTURA para generar datos ");
             Connection connection = driverOracle.getConnection();
-            Statement stmt = connection.prepareStatement("insert into DMRC_MAE_FACTURA_PARTITIONED(ID_NUM_CONTR,ID_NUM_FACTURA,FCH_GENERACION_INFO,FCH_FACTURACION,IMP_FACTURA_INTERESES,IMP_PAGO_INTERESES_CLIENTE,FCH_FIN_PERIODO_PAGO,FLG_PAGO_TIEMPO,IMP_A_PAGAR_TOTAL,IMP_FACTURA_CAPITAL,IMP_PAGO_CAPITAL_CLIENTE,FCH_CARGA_INFO,IMP_PAGO_MO,IMP_PAGO_FACTURA_MO,FCH_FACTURA_PAGADA) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            Statement stmt = connection.prepareStatement("insert into DMRC_MAE_FACTURA_PARTITIONED(" +
+                    "ID_NUM_CONTR,ID_NUM_FACTURA,FCH_GENERACION_INFO,FCH_FACTURACION,IMP_FACTURA_INTERESES,IMP_PAGO_INTERESES_CLIENTE," +
+                    "FCH_FIN_PERIODO_PAGO,FLG_PAGO_TIEMPO,IMP_A_PAGAR_TOTAL,IMP_FACTURA_CAPITAL,IMP_PAGO_CAPITAL_CLIENTE,FCH_CARGA_INFO," +
+                    "IMP_PAGO_MO,IMP_PAGO_FACTURA_MO,FCH_FACTURA_PAGADA) " +
+                    "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
             DMRC_MAE_FACTURA d = new DMRC_MAE_FACTURA(
                     "1",
@@ -38,10 +42,10 @@ public class DMRC_MAE_FACTURA_gen {
                     java.sql.Date.valueOf("2019-05-27")
             );
 
-            for (int i = 0; i < 3000000; i++){
+            for (int i = 0; i < 100; i++){
                 ((PreparedStatement) stmt).setString(1, "000" + String.valueOf(1730000000000l + i ));
                 ((PreparedStatement) stmt).setString(2, String.valueOf(i));
-                ((PreparedStatement) stmt).setDate(3, java.sql.Date.valueOf("2019-01-03"));
+                ((PreparedStatement) stmt).setDate(3, java.sql.Date.valueOf("2015-01-03"));
                 ((PreparedStatement) stmt).setDate(4, java.sql.Date.valueOf("2018-03-19"));
                 ((PreparedStatement) stmt).setInt(5, 1);
                 ((PreparedStatement) stmt).setInt(6, 2);
